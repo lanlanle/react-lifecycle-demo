@@ -3,6 +3,7 @@ import {Button} from 'reactstrap';
 import {extendObservable} from "mobx"
 import {observer} from "mobx-react"
 import Log from './log'
+import TodoList from './TodoList'
 
 export default observer(class App extends Component {
   constructor(props){
@@ -20,7 +21,7 @@ export default observer(class App extends Component {
 
   lifeCycleUpdate(input){
     this.componentState.push(input)
-    console.log(this.componentState)
+
   }
 
   increaseValue(){
@@ -49,10 +50,11 @@ export default observer(class App extends Component {
     
 
   render() {
-   
+      // console.log(this.componentState)
       return (
       <div>
           <Button onClick={this.increaseValue} >{this.state.value}</Button>
+          <TodoList  onClick={this.increaseValue}/>
           <Log state = {this.componentState}/>
       </div>
     )

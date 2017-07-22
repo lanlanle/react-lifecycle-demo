@@ -1,15 +1,35 @@
 import React from 'react';
+import "./App.css"
+import {Card,CardHeader,CardTitle,CardBlock,CardText} from 'reactstrap';
 
 
 class Log extends React.Component {
+	constructor(props){
+		super(props)
+		this.state = this.props.state
+	}
 	
 	render(){
-		var states = this.props.state.map((state,index)=> {
-			return <p key = {index} >{state}</p>
+		console.log(this.props.state)
+		var states = this.state.map((state,index)=> {
+			return <CardText key = {index} >{state}</CardText>
 		})
-		return(
-			<div>{states}</div>
+		if (this.props.state) {
+			return(
+			<Card>
+				<CardHeader>
+					Life Cycle Log
+				</CardHeader>
+				<CardBlock>
+				{states}
+				</CardBlock>
+			</Card>
+
 			)
+		} else {
+			return <div> Empty Log </div>
+		}
+		
 
 	}
 
