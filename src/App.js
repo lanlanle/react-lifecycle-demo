@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import {Button} from 'reactstrap';
+import {extendObservable} from "mobx"
+import {observer} from "mobx-react"
+import Log from './log'
 
-class App extends Component {
+export default observer(class App extends Component {
   constructor(props){
     super(props);
-    this.state = {value: 0}
+    extendObservable (this,{
+      componentState:[]
+    })
+    this.state = {
+      value: 0,
+    }
     this.updated = false
     this.increaseValue = this.increaseValue.bind(this);
+    // this.lifeCycleUpdate = this.lifeCycleUpdate.bind(this);
+  }
+
+  lifeCycleUpdate(input){
+    this.componentState.push(input)
+    console.log(this.componentState)
   }
 
   increaseValue(){
@@ -14,26 +28,35 @@ class App extends Component {
       value:this.state.value+1
     })
   }
-  componentWillUpdate(){
-    console.log("Component Will Update");
-  }
+  // componentWillUpdate(){
+  //   console.log("Component Will Update");
+  // }
 
   componentDidUpdate(){
     console.log("Component Did Update");
+    this.lifeCycleUpdate("Component Did Update");
   }
 
-  shouldComponentUpdate(){
-    this.updated= true
-    console.log(this.updated);
+
+  componentDidMount(){
+    console.log("Component Did Mount");
+    this.lifeCycleUpdate("Component Did Mount");
   }
+
+  componentWillUnmount(){
+    console.log("Component Will Unmount");
+  }
+    
 
   render() {
-    return (
+   
+      return (
       <div>
           <Button onClick={this.increaseValue} >{this.state.value}</Button>
+          <Log state = {this.componentState}/>
       </div>
-    );
+    )
+    
+    
   }
-}
-
-export default App;
+})
