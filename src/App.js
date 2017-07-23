@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from 'reactstrap';
+import {Button, Row, Col,Container} from 'reactstrap';
 import {extendObservable} from "mobx"
 import {observer} from "mobx-react"
 import Log from './log'
@@ -34,13 +34,13 @@ export default observer(class App extends Component {
   // }
 
   componentDidUpdate(){
-    console.log("Component Did Update");
+    // console.log("Component Did Update");
     this.lifeCycleUpdate("Component Did Update");
   }
 
 
   componentDidMount(){
-    console.log("Component Did Mount");
+    // console.log("Component Did Mount");
     this.lifeCycleUpdate("Component Did Mount");
   }
 
@@ -53,9 +53,12 @@ export default observer(class App extends Component {
       // console.log(this.componentState)
       return (
       <div>
-          <Button onClick={this.increaseValue} >{this.state.value}</Button>
-          <TodoList  onClick={this.increaseValue}/>
-          <Log state = {this.componentState}/>
+         
+            <Button onClick={this.increaseValue} >{this.state.value}</Button>
+          
+            <TodoList  onClick={this.increaseValue}/>
+             <Log state = {this.componentState}/>
+       
       </div>
     )
     

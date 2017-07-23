@@ -10,7 +10,7 @@ class Log extends React.Component {
 	}
 	
 	render(){
-		console.log(this.props.state)
+		// console.log(this.props.state)
 		var states = this.state.map((state,index)=> {
 			return <CardText key = {index} >{state}</CardText>
 		})

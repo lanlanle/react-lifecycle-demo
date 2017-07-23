@@ -1,6 +1,8 @@
 .card {
 	 box-shadow: 0px 4px 8px #fedce2;
 	 border:1px solid #fedce2;
+	 width:50%;
+	 margin: 30px;
 
 }
 
@@ -14,10 +16,30 @@
 .card-block {
 	height: 200px;
 	overflow: scroll;
+
 	
 }
 
 .card-text {
 	line-height: 5px;
 	padding: 5px 10px;
+}
+.form-group {
+	margin: 30px;
+	width:50%;
+}
+.btn {
+	color:white;
+	font-size:15px;
+	background-color:#f4a0c4;
+	border-radius:5px;
+	line-height: 30px;
+	width:70px;
+}
+
+.form-control {
+	width:75%;
+	line-height: 30px;
+	font-size:15px;
+	margin-right:10px;
 }
